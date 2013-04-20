@@ -12,5 +12,6 @@ end
 
 gem 'jquery-rails'
 gem 'twitter'
+gem 'haml-rails'
 
 
