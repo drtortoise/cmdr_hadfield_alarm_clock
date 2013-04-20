@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  body: MyText
+  timestamp: 2013-04-20 12:11:48
+  uid: 1
+  was_sent: false
+
+two:
+  body: MyText
+  timestamp: 2013-04-20 12:11:48
+  uid: 1
+  was_sent: false

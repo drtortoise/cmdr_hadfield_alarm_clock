@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  database: cmdr_hadfield_tweets
+  host: localhost
+
+
+test:
+  adapter: postgresql
+  database: cmdr_hadfield_tweets_test
+  host: localhost
