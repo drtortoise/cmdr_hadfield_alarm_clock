@@ -16,10 +16,13 @@ ActiveRecord::Schema.define(:version => 20130420111146) do
   create_table "tweets", :force => true do |t|
     t.text     "body"
     t.datetime "timestamp"
-    t.integer  "uid"
-    t.boolean  "was_sent"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "uid"
+    t.boolean  "was_sent",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
+
+  add_index "tweets", ["timestamp"], :name => "index_tweets_on_timestamp"
+  add_index "tweets", ["was_sent"], :name => "index_tweets_on_was_sent"
 
 end
