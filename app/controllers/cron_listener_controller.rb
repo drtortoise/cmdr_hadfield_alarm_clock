@@ -10,13 +10,12 @@ class CronListenerController < ApplicationController
   private
 
   def poll_twitter
-    # TODO make sure it's not a tweet we've already got
-    tweet = Twitter.user_timeline("cmdr_hadfield", :count => 1)[0]
-    uid = tweet['id'].to_s
+    @result = Twitter.user_timeline("cmdr_hadfield", :count => 1)[0]
+    uid = @result['id'].to_s
     unless Tweet.where(:uid => uid)
-      body = tweet['text']
-      timestamp = tweet['created_at']
-      Tweet.create(:body => body, :timestamp => timestamp, :uid => uid)
+      body = @result['text']
+      timestamp = @result['created_at']
+      @tweet = Tweet.create!(:body => body, :timestamp => timestamp, :uid => uid)
     end
   end
 end
