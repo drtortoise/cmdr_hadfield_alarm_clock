@@ -13,7 +13,7 @@ class Subscription < ActiveRecord::Base
     call = client.account.calls.create(
       :from => '+441772441337',
       :to => self.phone_number,
-      :url => latest_path
+      :url => "http://wakeupearth.herokuapp.com/latest"
     )
   end
 end
