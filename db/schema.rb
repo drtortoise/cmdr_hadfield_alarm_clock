@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420111146) do
+ActiveRecord::Schema.define(:version => 20130421131555) do
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "phone_number"
+    t.boolean  "is_active",    :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "subscriptions", ["is_active"], :name => "index_subscriptions_on_is_active"
 
   create_table "tweets", :force => true do |t|
     t.text     "body"
