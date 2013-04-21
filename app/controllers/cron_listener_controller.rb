@@ -1,6 +1,6 @@
 class CronListenerController < ApplicationController
   def receiving_ping
-    @tweet = Tweet.where('created_at > ? AND created_at < ? AND was_sent IS TRUE', Date.today.beginning_of_day + 3.hours, Date.today.beginning_of_day + 12.hours).last
+    @tweet = Tweet.where('created_at > ? AND created_at < ?', Date.today.beginning_of_day + 3.hours, Date.today.beginning_of_day + 12.hours).last
     unless @tweet
       poll_twitter
     end
