@@ -15,6 +15,10 @@ class TwilioController < ApplicationController
         render 'voice_response_error.xml.erb', :content_type => 'text/xml'
       end
     else
+      @subscription = Subscription.find_by_phone_number(params[:From])
+      if @subscription
+        @subscription.is_active = false
+      end
       render 'voice_response_unsubscribed.xml.erb', :content_type => 'text/xml'
     end
   end
