@@ -6,7 +6,7 @@ class TwilioController < ApplicationController
   end
 
   def voice_response
-    if params[:Digits].includes? 1
+    if params[:Digits].include? 1
       render 'voice_response.xml.erb', :content_type => 'text/xml'
     else
       render 'voice_response_unsubscribed.xml.erb', :content_type => 'text/xml'
