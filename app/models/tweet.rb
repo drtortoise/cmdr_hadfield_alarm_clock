@@ -7,7 +7,7 @@ class Tweet < ActiveRecord::Base
   after_create :wake_up_subscribers
 
   def remove_urls_from_tweet
-    self.body.sub /https?:\/\/[\S]+/, ''
+    self.body.sub! /https?:\/\/[\S]+/, ''
   end
 
   def wake_up_subscribers
