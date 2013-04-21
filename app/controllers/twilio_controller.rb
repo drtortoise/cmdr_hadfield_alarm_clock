@@ -7,7 +7,13 @@ class TwilioController < ApplicationController
 
   def voice_response
     if params[:Digits].include? "1"
-      render 'voice_response.xml.erb', :content_type => 'text/xml'
+      @subscription = Subscription.find_or_create_by_phone_number(params[:From])
+      @subscription.is_active = true
+      if @susbscription.save
+        render 'voice_response.xml.erb', :content_type => 'text/xml'
+      else
+        render 'voice_response_error.xml.erb', :content_type => 'text/xml'
+      end
     else
       render 'voice_response_unsubscribed.xml.erb', :content_type => 'text/xml'
     end
